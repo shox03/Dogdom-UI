@@ -1,4 +1,5 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
+import 'package:dogdom_ui/massages/modul/body_names.dart';
 import 'package:dogdom_ui/massages/modul/massages_modul.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +23,8 @@ class Bodycards extends StatelessWidget {
         itemBuilder: (context, index) => Dismissible(
           background: Container(
             alignment: Alignment.center,
-            color: Color.fromRGBO(250, 102, 80, 1),
-            child: Text(
+            color: const Color.fromRGBO(250, 102, 80, 1),
+            child: const Text(
               "Delete",
               style: TextStyle(
                   color: Colors.white,
@@ -59,8 +60,8 @@ class Bodycards extends StatelessWidget {
                   ],
                 ),
               ),
-              title: const Text(
-                "Black Marvin",
+              title: Text(
+                MassagBodyBarNames.name[index],
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500),
               ),
               subtitle: const Text(

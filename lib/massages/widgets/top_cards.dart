@@ -1,5 +1,6 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
 import 'package:dogdom_ui/massages/modul/massages_modul.dart';
+import 'package:dogdom_ui/massages/modul/top_bar_names.dart';
 import 'package:flutter/material.dart';
 
 class TopCards extends StatelessWidget {
@@ -43,8 +44,8 @@ class TopCards extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text(
-                    "Marvin",
+                  Text(
+                    MassagTopBarNames.name[index],
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 13.0,
