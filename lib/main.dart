@@ -1,5 +1,5 @@
-import 'package:dogdom_ui/login_page/login_page.dart';
-import 'package:dogdom_ui/massages/massages_page.dart';
+import 'package:dogdom_ui/screens/mainpage/main_page.dart';
+import 'package:dogdom_ui/screens/massages_input/massages_input_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Massages(),
+      home: MainPage(),
     );
   }
 }

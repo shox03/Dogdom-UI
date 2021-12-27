@@ -1,6 +1,6 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
-import 'package:dogdom_ui/massages/modul/body_names.dart';
-import 'package:dogdom_ui/massages/modul/massages_modul.dart';
+import 'package:dogdom_ui/screens/massages/modul/body_names.dart';
+import 'package:dogdom_ui/screens/massages/modul/massages_modul.dart';
 import 'package:flutter/material.dart';
 
 class Bodycards extends StatelessWidget {

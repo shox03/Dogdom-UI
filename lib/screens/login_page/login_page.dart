@@ -1,5 +1,5 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
-import 'package:dogdom_ui/login_page/widgets/textt_form.dart';
+import 'package:dogdom_ui/screens/login_page/widgets/textt_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pixel_perfect/pixel_perfect.dart';

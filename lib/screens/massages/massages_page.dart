@@ -1,7 +1,7 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
-import 'package:dogdom_ui/massages/widgets/body_cards.dart';
-import 'package:dogdom_ui/massages/widgets/top_bar.dart';
-import 'package:dogdom_ui/massages/widgets/top_cards.dart';
+import 'package:dogdom_ui/screens/massages/widgets/body_cards.dart';
+import 'package:dogdom_ui/screens/massages/widgets/top_bar.dart';
+import 'package:dogdom_ui/screens/massages/widgets/top_cards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -22,7 +22,7 @@ class Massages extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(
                   right: getProportionateScreenWidth(18.0),
-                  left: getProportionateScreenHeight(10.0)),
+                  left: getProportionateScreenWidth(10.0)),
               child: buildtopBar(),
             ),
             SizedBox(height: getProportionateScreenHeight(16.0)),
