@@ -3,7 +3,6 @@ import 'package:dogdom_ui/screens/massages/widgets/body_cards.dart';
 import 'package:dogdom_ui/screens/massages/widgets/top_bar.dart';
 import 'package:dogdom_ui/screens/massages/widgets/top_cards.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class Massages extends StatelessWidget {
   const Massages({Key? key}) : super(key: key);
@@ -34,20 +33,21 @@ class Massages extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: getProportionateScreenWidth(18.0)),
               child: SizedBox(
-                  height: getProportionateScreenHeight(85.0),
-                  width: width,
-                  child: const TextField(
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(style: BorderStyle.none, width: 0),
-                        ),
-                        hintStyle: TextStyle(
-                            color: Color.fromRGBO(0, 0, 0, 0.55),
-                            fontWeight: FontWeight.w400,
-                            fontSize: 13),
-                        hintText: "Search for Friends' Name..."),
-                  )),
+                height: getProportionateScreenHeight(85.0),
+                width: width,
+                child: const TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(style: BorderStyle.none, width: 0),
+                      ),
+                      hintStyle: TextStyle(
+                          color: Color.fromRGBO(0, 0, 0, 0.55),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 13),
+                      hintText: "Search for Friends' Name..."),
+                ),
+              ),
             )
           ],
         ),
