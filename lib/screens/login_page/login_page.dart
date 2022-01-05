@@ -1,4 +1,5 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
+import 'package:dogdom_ui/screens/login_page/widgets/login_button.dart';
 import 'package:dogdom_ui/screens/login_page/widgets/textt_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -33,26 +34,9 @@ class LoginPage extends StatelessWidget {
                 SizedBox(height: getProportionateScreenHeight(165.0)),
                 SvgPicture.asset("assets/Dogdom.svg"),
                 SizedBox(height: getProportionateScreenHeight(31.0)),
-                const TextFormWidget(),
+                TextFormWidget(),
                 SizedBox(height: getProportionateScreenHeight(16.0)),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color.fromRGBO(250, 102, 80, 1),
-                      fixedSize: Size(
-                        getProportionateScreenWidth(319.0),
-                        getProportionateScreenHeight(58.0),
-                      ),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(65.0))),
-                  onPressed: () {},
-                  child: const Text(
-                    "Get Captcha",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.w500),
-                  ),
-                ),
+                LoginButtonWidget(),
                 SizedBox(height: getProportionateScreenHeight(15.0)),
                 const Text(
                   "Password to Login",

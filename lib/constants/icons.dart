@@ -1,4 +1,5 @@
 class MyIcons {
+  static const addSmall = 'assets/icons/add.svg';
   static const hash = 'assets/icons/#.svg';
   static const aa = 'assets/icons/Aa.svg';
   static const addCircle = 'assets/icons/Add_circle.svg';
@@ -73,6 +74,12 @@ class MyIcons {
   static const nearby = 'assets/icons/Nearby.png';  
   static const surrounding = 'assets/icons/Surrounding.png';  
   static const discuss = 'assets/icons/Discuss.png';  
-  static const ranking = 'assets/icons/Ranking.png';  
+  static const ranking = 'assets/icons/Ranking.png'; 
+
+  // notice icons
+  static const praise = 'assets/icons/praise.svg';
+  static const help = 'assets/icons/help.svg';
+  static const comment = 'assets/icons/comments.svg';
+  static const messages = 'assets/icons/messages.svg';
   
 }

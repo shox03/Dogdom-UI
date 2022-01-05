@@ -4,7 +4,7 @@ import 'package:dogdom_ui/constants/size_confi.dart';
 import 'package:dogdom_ui/providers/homepage_provider.dart';
 import 'package:dogdom_ui/providers/search_field_provider.dart';
 import 'package:dogdom_ui/screens/home/text/meidum_text.dart';
-import 'package:dogdom_ui/screens/home/widgets/homepage_horizontal_car.dart';
+import 'package:dogdom_ui/screens/home/text/text_regular.dart';
 import 'package:dogdom_ui/screens/home/widgets/my_images.dart';
 import 'package:dogdom_ui/screens/home/widgets/my_tab_bar_item.dart';
 import 'package:dogdom_ui/screens/home/widgets/search_text_field.dart';
@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/src/provider.dart';
 
-class HomeSelectPage extends StatelessWidget {
-  const HomeSelectPage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,20 +22,11 @@ class HomeSelectPage extends StatelessWidget {
       backgroundColor: whiteConst,
       body: Column(
         children: [
-          // SELECT DISCOVER SECTION
+          SizedBox(height: getProportionateScreenHeight(44.0)),
           buildAppBar(select, context),
-
-          // SEACH FIELD SECTION
           buildSearchField(context),
-
-          // TOP NAVIGATION BAR
           buildTabBar(select),
-
-          // HORIZONTAL SCROLL CARD
-          if (select) buildHorizontalScroll(),
-          SizedBox(height: getProportionateScreenHeight(10.0)),
-
-          // VERTICAL SCROLL CARD
+          if (select) buldHorizontalScroll(),
           buildVerticalScroll()
         ],
       ),
@@ -44,47 +35,106 @@ class HomeSelectPage extends StatelessWidget {
 
   Widget buildVerticalScroll() {
     return Expanded(
-        child: ListView.builder(
-            padding: EdgeInsets.zero,
-            physics: const BouncingScrollPhysics(),
-            itemCount: 3,
-            itemBuilder: (context, index) {
-              return Container(
-                height: 300,
-                width: 500,
-                color: Colors.amber,
-                margin: const EdgeInsets.all(10),
-              );
-            }));
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        physics: const BouncingScrollPhysics(),
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Container(
+            height: 300,
+            width: 500,
+            color: Colors.amber,
+            margin: const EdgeInsets.all(10),
+            child: Image.network(
+              "https://source.unsplash.com/random/${index + 1}",
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
   }
 
-  Widget buildHorizontalScroll() {
-    return SizedBox(
+  Widget buldHorizontalScroll() {
+    return Container(
+      margin: EdgeInsets.only(bottom: getProportionateScreenHeight(10.0)),
       width: SizeConfig.screenWidth,
       height: getProportionateScreenHeight(190.0),
-      child: ListView.builder(
+      child: ListView(
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        padding:
-            EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(18.0)),
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return index == 0
-              ? MyHorizontalScrollCard(
-                  onpressed: () {},
-                  buttonText: 'Let name',
-                  title: 'Take me home',
-                  subtitle: 'Take care of stay dogs, please\ntake them home',
-                  image: MyImages.homeCard1,
-                )
-              : MyHorizontalScrollCard(
-                  image: MyImages.homeCard2,
-                  title: 'Take me home',
-                  titleSize: 17,
-                  subtitle: 'Please take me home',
-                  textColor: whiteConst,
-                );
-        },
+        padding: EdgeInsets.symmetric(
+          horizontal: getProportionateScreenWidth(18.0),
+        ),
+        children: [
+          Container(
+            width: getProportionateScreenWidth(339.0),
+            height: getProportionateScreenHeight(190.0),
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: getProportionateScreenWidth(24.0),
+                bottom: getProportionateScreenHeight(30.0),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: getProportionateScreenHeight(38.0)),
+                  const Text(
+                    "Take me home",
+                    style:
+                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+                  ),
+                  const Text(
+                    "Take care of stray dogs, please\ntake them home.",
+                    style:
+                        TextStyle(fontSize: 13.0, fontWeight: FontWeight.w400),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      primary: blackConst,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: getProportionateScreenWidth(22.5),
+                        vertical: getProportionateScreenHeight(6.0),
+                      ),
+                    ),
+                    child: MyTextRegular(
+                      data: 'Let me',
+                      size: 12,
+                      maxLines: 1,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage("assets/Card-Shuffling.png"),
+                fit: BoxFit.cover,
+              ),
+              color: greyConst,
+              borderRadius: BorderRadius.circular(
+                getProportionateScreenWidth(18.0),
+              ),
+            ),
+          ),
+          SizedBox(width: getProportionateScreenWidth(10.0)),
+          Container(
+            width: getProportionateScreenWidth(339.0),
+            height: getProportionateScreenHeight(190.0),
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage(MyImages.homeCard2),
+                fit: BoxFit.cover,
+              ),
+              color: greyConst,
+              borderRadius: BorderRadius.circular(
+                getProportionateScreenWidth(18.0),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -99,29 +149,29 @@ class HomeSelectPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: select
             ? const [
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.ranking,
                   text: "Ranking",
                 ),
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.discuss,
                   text: "Discuss",
                 ),
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.surrounding,
                   text: "Surrounding",
                 ),
               ]
             : const [
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.nearby,
                   text: "Nearby",
                 ),
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.revelation,
                   text: "Revelation",
                 ),
-                MyTapBarItem(
+                TapBarItem(
                   image: MyIcons.fosterCare,
                   text: "Foster care",
                 ),
@@ -132,10 +182,24 @@ class HomeSelectPage extends StatelessWidget {
 
   Widget buildSearchField(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(18.0)),
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(18.0),
+      ),
       child: MySearchTextField(
         controller: context.watch<SearchFieldProvider>().searchController,
+        hintText: 'Send the sample',
+        suffixIcon: SvgPicture.asset(
+          MyIcons.voiceTwo,
+          color: blackConst.withOpacity(0.55),
+          width: getProportionateScreenWidth(24.0),
+          fit: BoxFit.none,
+        ),
+        prefixIcon: SvgPicture.asset(
+          MyIcons.searchSmall,
+          width: getProportionateScreenWidth(24.0),
+          fit: BoxFit.none,
+          color: blackConst.withOpacity(0.25),
+        ),
       ),
     );
   }
@@ -144,12 +208,13 @@ class HomeSelectPage extends StatelessWidget {
     return SafeArea(
       child: Padding(
         padding: EdgeInsets.fromLTRB(
-            getProportionateScreenWidth(18.0),
-            getProportionateScreenHeight(10.0),
-            getProportionateScreenWidth(18.0),
-            getProportionateScreenHeight(10.0)),
+          getProportionateScreenWidth(18.0),
+          getProportionateScreenHeight(10.0),
+          getProportionateScreenWidth(18.0),
+          getProportionateScreenHeight(10.0),
+        ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(width: getProportionateScreenWidth(24.0)),
@@ -165,10 +230,11 @@ class HomeSelectPage extends StatelessWidget {
                     color: select ? blackConst : blackConst.withOpacity(0.4),
                   ),
                   SizedBox(height: getProportionateScreenHeight(5.0)),
-                  SvgPicture.asset(
-                    MyIcons.smile2,
-                    color: select ? redConst : Colors.transparent,
-                  )
+                  if (select)
+                    SvgPicture.asset(
+                      MyIcons.smile2,
+                      color: redConst,
+                    ),
                 ],
               ),
             ),
@@ -186,10 +252,11 @@ class HomeSelectPage extends StatelessWidget {
                     color: !select ? blackConst : blackConst.withOpacity(0.4),
                   ),
                   SizedBox(height: getProportionateScreenHeight(5.0)),
-                  SvgPicture.asset(
-                    MyIcons.smile2,
-                    color: !select ? redConst : Colors.transparent,
-                  )
+                  if (!select)
+                    SvgPicture.asset(
+                      MyIcons.smile2,
+                      color: redConst,
+                    ),
                 ],
               ),
             ),
@@ -199,7 +266,7 @@ class HomeSelectPage extends StatelessWidget {
               MyIcons.notification,
               height: getProportionateScreenHeight(24.0),
               color: blackConst.withOpacity(0.3),
-            )
+            ),
           ],
         ),
       ),

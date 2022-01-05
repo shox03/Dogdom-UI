@@ -1,10 +1,13 @@
 import 'package:dogdom_ui/constants/icons.dart';
 import 'package:dogdom_ui/constants/size_confi.dart';
+import 'package:dogdom_ui/screens/about/about_page.dart';
 import 'package:dogdom_ui/screens/circle/circle_page.dart';
 import 'package:dogdom_ui/screens/home/home_page.dart';
 import 'package:dogdom_ui/screens/massages/massages_page.dart';
-import 'package:dogdom_ui/screens/massages_input/massages_input_page.dart';
 import 'package:dogdom_ui/screens/notice%20center/notice_page.dart';
+import 'package:dogdom_ui/screens/personal_center/personal_center.dart';
+import 'package:dogdom_ui/screens/personal_center/user_page.dart';
+import 'package:dogdom_ui/screens/release_page/release_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -23,11 +26,11 @@ class _MainPageState extends State<MainPage> {
     SizeConfig().init(context);
 
     final _kTabPages = <Widget>[
-      const NoticePage(),
-      const HomeSelectPage(),
-      const Massages(),
+      const HomePage(),
       const CirclePage(),
-      const MassagesInput(),
+      const Release1(),
+      const NoticePage(),
+      PerconalPage(),
     ];
     final _kBottmonNavBarItems = <BottomNavigationBarItem>[
       BottomNavigationBarItem(

@@ -2,10 +2,10 @@ import 'package:dogdom_ui/constants/size_confi.dart';
 import 'package:dogdom_ui/screens/home/text/text_regular.dart';
 import 'package:flutter/material.dart';
 
-class MyTapBarItem extends StatelessWidget {
+class TapBarItem extends StatelessWidget {
   final String image;
   final String text;
-  const MyTapBarItem({
+  const TapBarItem({
     required this.image,
     required this.text,
     Key? key,
@@ -23,7 +23,11 @@ class MyTapBarItem extends StatelessWidget {
             image,
             width: getProportionateScreenWidth(40.0),
           ),
-          MyTextRegular(data: text, size: 13)
+          MyTextRegular(
+            data: text,
+            size: 13,
+            maxLines: 1,
+          ),
         ],
       ),
     );

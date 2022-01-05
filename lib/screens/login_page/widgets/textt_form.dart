@@ -1,8 +1,11 @@
 import 'package:dogdom_ui/constants/size_confi.dart';
+import 'package:dogdom_ui/providers/login_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TextFormWidget extends StatefulWidget {
-  const TextFormWidget({Key? key}) : super(key: key);
+  late bool isVisible;
+  late bool isLoginPage;
 
   @override
   _TextFormWidgetState createState() => _TextFormWidgetState();
@@ -28,53 +31,41 @@ class _TextFormWidgetState extends State<TextFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (v) {
-        if (v!.isEmpty) {
-          return "Field can't be empty";
-        }
-      },
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Color.fromRGBO(255, 255, 255, 0.25),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(71.0),
-          borderSide: BorderSide.none,
-        ),
-        hintStyle: TextStyle(color: Colors.white),
-        prefixIcon: Padding(
-          padding: EdgeInsets.only(left: getProportionateScreenWidth(28)),
-          child: DropdownButton<String>(
-            dropdownColor: Colors.grey,
-            style: TextStyle(color: Colors.white, fontSize: 17.0),
-            value: _btn1SelectedVal,
-            onChanged: (String? newValue) {
-              if (newValue != null) {
-                setState(() => _btn1SelectedVal = newValue);
-              }
-            },
-            items: this._dropDownMenuItems,
+    var contextWatch = context.watch<AuthProvider>();
+    var contextRead = context.read<AuthProvider>();
+    return Form(
+      key: contextWatch.formKey,
+      child: TextFormField(
+        controller: contextWatch.phoneController,
+        validator: (v) {
+          if (v!.isEmpty) {
+            return "Field can't be empty";
+          }
+        },
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: const Color.fromRGBO(255, 255, 255, 0.25),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(71.0),
+            borderSide: BorderSide.none,
+          ),
+          hintStyle: const TextStyle(color: Colors.white),
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(left: getProportionateScreenWidth(28)),
+            child: DropdownButton<String>(
+              dropdownColor: Colors.grey,
+              style: const TextStyle(color: Colors.white, fontSize: 17.0),
+              value: _btn1SelectedVal,
+              onChanged: (String? newValue) {
+                if (newValue != null) {
+                  setState(() => _btn1SelectedVal = newValue);
+                }
+              },
+              items: this._dropDownMenuItems,
+            ),
           ),
         ),
       ),
-    );
-  }
-}
-
-// Inspired by dropdown buttons demo in offical flutter gallery:
-// https://github.com/flutter/flutter/blob/master/examples/flutter_gallery/lib/demo/material/buttons_demo.dart
-class DropdownButtonExample extends StatefulWidget {
-  const DropdownButtonExample({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _DropdownButtonExampleState();
-}
-
-class _DropdownButtonExampleState extends State<DropdownButtonExample> {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[],
     );
   }
 }
